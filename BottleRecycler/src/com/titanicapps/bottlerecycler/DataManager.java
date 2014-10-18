@@ -16,21 +16,35 @@ import android.content.Context;
 
 public class DataManager {
 	
-	private static final String BOTTLE_COUNT_FILE_NAME= "bottle_count_data";
+	private static final String BOTTLE_COUNT_FILE_NAME = "bottle_count_data";
+	private static final String RECYCLE_HISTORY_FILE_NAME = "recycle_history_data";
+	
 	private BottleCountData bottleCountData= new BottleCountData();
+	private RecycleHistoryListData recycleHistoryListData = new RecycleHistoryListData();
 	
 	public BottleCountData getBottleCountData(){
 		return bottleCountData;
+	}
+	
+	public RecycleHistoryListData getRecycleHistoryListData(){
+		return recycleHistoryListData;
 	}
 	
 	public void load(Activity context){
 		try
     	{
     		
-	    	FileInputStream fInputStream = context.openFileInput(BOTTLE_COUNT_FILE_NAME);
-	    	ObjectInputStream oIsBottleCount = new ObjectInputStream(fInputStream);
+	    	FileInputStream fIBottleCount = context.openFileInput(BOTTLE_COUNT_FILE_NAME);
+	    	ObjectInputStream oIsBottleCount = new ObjectInputStream(fIBottleCount);
 	    	bottleCountData = (BottleCountData) oIsBottleCount.readObject();
-	    	fInputStream.close();   		    	    	
+	    	fIBottleCount.close();   
+	    	
+	    	FileInputStream fInputStream = context.openFileInput(RECYCLE_HISTORY_FILE_NAME);
+	    	ObjectInputStream oIsHistory = new ObjectInputStream(fInputStream);
+	    	recycleHistoryListData = (RecycleHistoryListData) oIsHistory.readObject();
+	    	fInputStream.close();  
+	    	
+	    	
     	}
     	catch(FileNotFoundException e)
     	{} 
@@ -46,14 +60,23 @@ public class DataManager {
 		 try
 		    {
 
-		    	FileOutputStream fos;
-		    	ObjectOutputStream Oos;
+		    	FileOutputStream fosBottle;
+		    	ObjectOutputStream OosBottle;
 
-		    	fos = context.openFileOutput(BOTTLE_COUNT_FILE_NAME, mode);
-		    	Oos = new ObjectOutputStream(fos);
-	    		Oos.writeObject(bottleCountData);
+		    	fosBottle = context.openFileOutput(BOTTLE_COUNT_FILE_NAME, mode);
+		    	OosBottle = new ObjectOutputStream(fosBottle);
+	    		OosBottle.writeObject(bottleCountData);
 
-		    	Oos.close();
+		    	OosBottle.close();
+		    	
+		    	FileOutputStream fosHistory;
+		    	ObjectOutputStream OosHistory;
+
+		    	fosHistory = context.openFileOutput(RECYCLE_HISTORY_FILE_NAME, mode);
+		    	OosHistory = new ObjectOutputStream(fosHistory);
+	    		OosHistory.writeObject(recycleHistoryListData);
+
+		    	OosHistory.close();
 		    }
 		    catch(IOException e)
 		    {}		
