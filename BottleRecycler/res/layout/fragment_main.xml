@@ -8,9 +8,69 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.titanicapps.bottlerecycler.MainActivity$PlaceholderFragment" >
 
-    <TextView
+  	<TextView
+	    android:id="@+id/txtDenom"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="5dp"
+		android:text="@string/txt_denom"
+	  	android:textAppearance="?android:attr/textAppearanceLarge"/> 
+	  		
+	<Button
+        android:id="@+id/btn_decreaseDenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_toLeftOf="@id/txtDenom"
+		android:layout_alignParentTop="true"
+		android:layout_marginTop="5dp"
+		android:layout_marginRight="5dp"
+		android:text="@string/txt_minus"
+        android:onClick="onDecreaseDenom"/> 
+        	    
+	<Button
+        android:id="@+id/btn_increaseDenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="5dp"
+		android:layout_toRightOf="@id/txtDenom"
+		android:text="@string/txt_plus"
+        android:onClick="onIncreaseDenom"/> 	
+        
+	<Button
+        android:id="@+id/btn_decreaseCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_below="@id/txtDenom"
+		android:layout_marginRight="5dp"
+		android:layout_marginTop="30dp"
+		android:text="@string/txt_minus"
+        android:onClick="onDecreaseCount"/> 
+        
+  	<TextView
+	    android:id="@+id/txtCount"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_alignTop="@id/btn_decreaseCount"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="30dp"
+	  	android:textAppearance="?android:attr/textAppearanceLarge"
+	  	android:text="@string/txt_count"/> 
+	  	
+  	<Button
+        android:id="@+id/btn_increaseCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_below="@id/txtDenom"
+		android:layout_marginLeft="5dp"
+		android:layout_marginTop="30dp"
+		android:text="@string/txt_plus"
+        android:onClick="onIncreaseCount"/> 
+        
 
 </RelativeLayout>
