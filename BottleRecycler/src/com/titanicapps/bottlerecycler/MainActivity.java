@@ -1,7 +1,9 @@
 package com.titanicapps.bottlerecycler;
 
+import java.util.Locale;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -77,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
 		{
 			mDenom = MIN_DENOM;
 		}
-		String tmpText = String.valueOf(mDenom);
+		String tmpText = formatDenom(mDenom);
 		TextView denomText = (TextView) findViewById(R.id.txtDenom);		
 		if(denomText != null)
 		{
@@ -92,7 +94,7 @@ public class MainActivity extends ActionBarActivity {
 			mDenom = MAX_DENOM;
 		}
 		
-		String tmpText = String.valueOf(mDenom);
+		String tmpText = formatDenom(mDenom);
 		TextView denomText = (TextView) findViewById(R.id.txtDenom);
 		if(denomText != null)
 		{
@@ -106,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
 		{
 			mCount = MAX_COUNT;
 		}
-		String tmpText = String.valueOf(mCount);
+		String tmpText = formatCount(mCount);
 		TextView countText = (TextView) findViewById(R.id.txtCount);		
 		if(countText != null)
 		{
@@ -120,7 +122,7 @@ public class MainActivity extends ActionBarActivity {
 		{
 			mCount = MIN_COUNT;
 		}
-		String tmpText = String.valueOf(mCount);
+		String tmpText = formatCount(mCount);
 		TextView countText = (TextView) findViewById(R.id.txtCount);		
 		if(countText != null)
 		{
@@ -128,9 +130,30 @@ public class MainActivity extends ActionBarActivity {
 		}		
 	}
 	
+	public void onVoiceInput(View view)
+	{
+		
+	}
+	
+	public void onAddTotal(View view)
+	{
+		
+	}
+	
+	@SuppressLint("DefaultLocale")
 	private String formatCount(int count)
 	{
-	
+		String formatedString = String.format(Locale.getDefault(),"%04d", count);
+		return formatedString;
 	}
+	
+	@SuppressLint("DefaultLocale")
+	private String formatDenom(int denom)
+	{
+		String formatedString = String.format(Locale.getDefault(),getString(R.string._0_02d), denom);
+		return formatedString;		
+	}
+
+
 
 }

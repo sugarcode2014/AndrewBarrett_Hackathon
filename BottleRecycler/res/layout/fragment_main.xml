@@ -26,7 +26,7 @@
 		android:layout_alignParentTop="true"
 		android:layout_marginTop="5dp"
 		android:layout_marginRight="5dp"
-		android:text="@string/txt_minus"
+		android:text="@string/btn_minus"
         android:onClick="onDecreaseDenom"/> 
         	    
 	<Button
@@ -37,7 +37,7 @@
 		android:layout_marginTop="5dp"
 		android:layout_marginLeft="5dp"
 		android:layout_toRightOf="@id/txtDenom"
-		android:text="@string/txt_plus"
+		android:text="@string/btn_plus"
         android:onClick="onIncreaseDenom"/> 	
         
 	<Button
@@ -48,7 +48,7 @@
 		android:layout_below="@id/txtDenom"
 		android:layout_marginRight="5dp"
 		android:layout_marginTop="30dp"
-		android:text="@string/txt_minus"
+		android:text="@string/btn_minus"
         android:onClick="onDecreaseCount"/> 
         
   	<TextView
@@ -69,8 +69,30 @@
 		android:layout_below="@id/txtDenom"
 		android:layout_marginLeft="5dp"
 		android:layout_marginTop="30dp"
-		android:text="@string/txt_plus"
+		android:text="@string/btn_plus"
         android:onClick="onIncreaseCount"/> 
+        
+  	 <Button
+        android:id="@+id/btn_voiceInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_below="@id/txtCount"
+		android:layout_marginLeft="5dp"
+		android:layout_marginTop="10dp"
+		android:text="@string/btn_voice"
+        android:onClick="onVoiceInput"/> 
+        
+  	 <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_below="@id/txtCount"
+		android:layout_marginLeft="5dp"
+		android:layout_marginTop="10dp"
+		android:text="@string/btn_add"
+        android:onClick="onAddTotal"/> 
         
 
 </RelativeLayout>
