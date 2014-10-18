@@ -4,13 +4,8 @@ package com.titanicapps.bottlerecycler;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
 public class BottleCountData implements Serializable{
 
-	public class CountRecord{
-		public int denomCents = 0;
-		public int count = 0;
-	}
 	private static final long serialVersionUID = 1L;
 	private int currentDenomCents = 0;
 	private int currentCount = 0;
@@ -37,5 +32,20 @@ public class BottleCountData implements Serializable{
 		return countRecords;
 	}
 	
-
+	public Long getTotalCount(){
+		Long totalCount = Long.valueOf(0);
+		for(int i = 0; i < countRecords.size(); i++){
+			totalCount += countRecords.get(i).getCount();
+		}
+		return totalCount;
+	}
+	
+	public Long getTotalValueCents(){
+		Long totalValue = Long.valueOf(0);
+		for(int i = 0; i < countRecords.size(); i++){
+			totalValue += countRecords.get(i).getCount() * countRecords.get(i).getDenomCents();
+		}		
+		return totalValue;
+	}
+	
 }

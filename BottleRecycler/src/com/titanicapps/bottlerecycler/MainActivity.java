@@ -1,5 +1,6 @@
 package com.titanicapps.bottlerecycler;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -34,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	private int mDenom = 0;
 	private int mCount = 0;
+	private DataManager dataManager = new DataManager();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
 			
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();		
-
+			
 		}
 
 	}
@@ -67,6 +69,40 @@ public class MainActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onDestroy()
+	{
+		
+	}
+	
+	@Override
+	public void onStop()
+	{
+		dataManager.getBottleCountData().setCurrentCount(mCount);
+		dataManager.getBottleCountData().setCurrentDenomCents(mDenom);
+		dataManager.save(this);
+	}
+	
+	@Override
+	public void onStart()
+	{
+		dataManager.load(this);
+		mDenom = dataManager.getBottleCountData().getCurrentDenomCents();
+		mCount = dataManager.getBottleCountData().getCurrentCount();	
+		String tmpText = formatCount(mCount);
+		TextView countText = (TextView) findViewById(R.id.txtCount);		
+		if(countText != null)
+		{
+			countText.setText(tmpText);
+		}	
+		tmpText = formatDenom(mDenom);
+		TextView denomText = (TextView) findViewById(R.id.txtDenom);		
+		if(denomText != null)
+		{
+			denomText.setText(tmpText);
+		}
 	}
 
 	/**
@@ -177,7 +213,23 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void onAddTotal(View view)
 	{
-
+		CountRecord countRecord = new CountRecord();
+		countRecord.setCount(mCount);
+		countRecord.setDenomCents(mDenom);
+		dataManager.getBottleCountData().addCountRecord(countRecord);
+		TextView totalCountText = (TextView) findViewById(R.id.txtTotalCount);
+		if(totalCountText != null)
+		{
+			totalCountText.setText(dataManager.getBottleCountData().getTotalCount().toString());
+		}
+		TextView totalAmountText = (TextView) findViewById(R.id.txtTotalValue);
+		if(totalAmountText != null)
+		{
+			NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
+			totalAmountText.setText(currencyFormat.format(dataManager.getBottleCountData().getTotalValueCents()));
+			
+		}		
+		
 	}
 	
 	 @Override
