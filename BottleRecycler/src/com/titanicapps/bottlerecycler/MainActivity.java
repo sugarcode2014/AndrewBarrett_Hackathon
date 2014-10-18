@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public void onDestroy()
 	{
-		
+		super.onDestroy();
 	}
 	
 	@Override
@@ -83,6 +83,7 @@ public class MainActivity extends ActionBarActivity {
 		dataManager.getBottleCountData().setCurrentCount(mCount);
 		dataManager.getBottleCountData().setCurrentDenomCents(mDenom);
 		dataManager.save(this);
+		super.onStop();
 	}
 	
 	@Override
@@ -91,18 +92,11 @@ public class MainActivity extends ActionBarActivity {
 		dataManager.load(this);
 		mDenom = dataManager.getBottleCountData().getCurrentDenomCents();
 		mCount = dataManager.getBottleCountData().getCurrentCount();	
-		String tmpText = formatCount(mCount);
-		TextView countText = (TextView) findViewById(R.id.txtCount);		
-		if(countText != null)
-		{
-			countText.setText(tmpText);
-		}	
-		tmpText = formatDenom(mDenom);
-		TextView denomText = (TextView) findViewById(R.id.txtDenom);		
-		if(denomText != null)
-		{
-			denomText.setText(tmpText);
-		}
+		super.onStart();
+		setCountText();
+		setDenomText();
+		setTotalValueText();
+		setTotalCountText();
 	}
 
 	/**
@@ -128,12 +122,8 @@ public class MainActivity extends ActionBarActivity {
 		{
 			mDenom = MIN_DENOM;
 		}
-		String tmpText = formatDenom(mDenom);
-		TextView denomText = (TextView) findViewById(R.id.txtDenom);		
-		if(denomText != null)
-		{
-			denomText.setText(tmpText);
-		}
+		
+		setDenomText();
 	}
 	
 	public void onIncreaseDenom(View view)
@@ -143,12 +133,7 @@ public class MainActivity extends ActionBarActivity {
 			mDenom = MAX_DENOM;
 		}
 		
-		String tmpText = formatDenom(mDenom);
-		TextView denomText = (TextView) findViewById(R.id.txtDenom);
-		if(denomText != null)
-		{
-			denomText.setText(tmpText);
-		}
+		setDenomText();
 	}
 	
 	public void onIncreaseCount(View view)
@@ -157,12 +142,7 @@ public class MainActivity extends ActionBarActivity {
 		{
 			mCount = MAX_COUNT;
 		}
-		String tmpText = formatCount(mCount);
-		TextView countText = (TextView) findViewById(R.id.txtCount);		
-		if(countText != null)
-		{
-			countText.setText(tmpText);
-		}		
+		setCountText();		
 	}
 	
 	public void onDecreaseCount(View view)
@@ -171,12 +151,7 @@ public class MainActivity extends ActionBarActivity {
 		{
 			mCount = MIN_COUNT;
 		}
-		String tmpText = formatCount(mCount);
-		TextView countText = (TextView) findViewById(R.id.txtCount);		
-		if(countText != null)
-		{
-			countText.setText(tmpText);
-		}		
+		setCountText();
 	}
 	
 	public void onVoiceInput(View view)
@@ -217,19 +192,11 @@ public class MainActivity extends ActionBarActivity {
 		countRecord.setCount(mCount);
 		countRecord.setDenomCents(mDenom);
 		dataManager.getBottleCountData().addCountRecord(countRecord);
-		TextView totalCountText = (TextView) findViewById(R.id.txtTotalCount);
-		if(totalCountText != null)
-		{
-			totalCountText.setText(dataManager.getBottleCountData().getTotalCount().toString());
-		}
-		TextView totalAmountText = (TextView) findViewById(R.id.txtTotalValue);
-		if(totalAmountText != null)
-		{
-			NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
-			totalAmountText.setText(currencyFormat.format(dataManager.getBottleCountData().getTotalValueCents()));
-			
-		}		
-		
+		setTotalCountText();
+		setTotalValueText();
+		mCount = 0;
+		setCountText();
+				
 	}
 	
 	 @Override
@@ -258,11 +225,7 @@ public class MainActivity extends ActionBarActivity {
 
 								if (num != null) {
 									mCount = num.intValue();
-									String tmpText = formatCount(mCount);
-									TextView countText = (TextView) findViewById(R.id.txtCount);
-									if (countText != null) {
-										countText.setText(tmpText);
-									}
+									setCountText();
 								}
 
 								break;
@@ -297,19 +260,47 @@ public class MainActivity extends ActionBarActivity {
 			}
 		}
 	}
+		
 	
 	@SuppressLint("DefaultLocale")
-	private String formatCount(int count)
+	private void setCountText()
 	{
-		String formatedString = String.format(Locale.getDefault(),"%04d", count);
-		return formatedString;
+		TextView countText = (TextView) findViewById(R.id.txtCount);		
+		if(countText != null)
+		{
+			countText.setText(String.format(Locale.getDefault(),"%04d", mCount));
+		}			
 	}
 	
-	@SuppressLint("DefaultLocale")
-	private String formatDenom(int denom)
+	private void setDenomText()
 	{
-		String formatedString = String.format(Locale.getDefault(),getString(R.string._0_02d), denom);
-		return formatedString;		
+		TextView denomText = (TextView) findViewById(R.id.txtDenom);		
+		if(denomText != null)
+		{
+			denomText.setText(String.format(Locale.getDefault(),getString(R.string._0_02d), mDenom));
+		}	
+	}
+	
+	private void setTotalCountText()
+	{
+		TextView totalCountText = (TextView) findViewById(R.id.txtTotalCount);		
+		if(totalCountText != null)
+		{
+			totalCountText.setText(dataManager.getBottleCountData().getTotalCount().toString());
+		}			
+	}
+	
+	private void setTotalValueText()
+	{
+		TextView totalAmountText = (TextView) findViewById(R.id.txtTotalValue);
+		if(totalAmountText != null)
+		{
+			long valueInCents = dataManager.getBottleCountData().getTotalValueCents();
+			NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
+
+			totalAmountText.setText(currencyFormat.format(valueInCents/100.0));
+			
+		}		
 	}
 
 	 public void checkVoiceRecognition() {
