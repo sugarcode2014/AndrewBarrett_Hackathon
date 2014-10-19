@@ -1,29 +1,26 @@
 package com.titanicapps.bottlerecycler;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class RecycleHistoryData implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private long dateReturnedInMs = 0;
-	private long totalCount = 0;
+	private ArrayList<CountRecord> countRecords = new ArrayList<CountRecord>();
 	public long getDateReturnedInMs() {
 		return dateReturnedInMs;
 	}
 	public void setDateReturnedInMs(long dateReturnedInMs) {
 		this.dateReturnedInMs = dateReturnedInMs;
 	}
-	public long getTotalCount() {
-		return totalCount;
+	
+	public void setCountRecords(ArrayList<CountRecord> countRecords){
+		this.countRecords = countRecords;
 	}
-	public void setTotalCount(long totalCount) {
-		this.totalCount = totalCount;
+	
+	public ArrayList<CountRecord> getCountRecords(){
+		return countRecords;
 	}
-	public long getTotalValueCents() {
-		return totalValueCents;
-	}
-	public void setTotalValueCents(long totalValueCents) {
-		this.totalValueCents = totalValueCents;
-	}
-	private long totalValueCents = 0;
+
 }

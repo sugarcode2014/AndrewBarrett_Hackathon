@@ -48,4 +48,11 @@ public class BottleCountData implements Serializable{
 		return totalValue;
 	}
 	
+	public void clearCountData()
+	{
+		countRecords.clear();
+		currentDenomCents = 0;
+		currentCount = 0;		
+	}
+	
 }

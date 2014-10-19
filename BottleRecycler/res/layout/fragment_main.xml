@@ -68,7 +68,7 @@
 	    android:layout_height="wrap_content"
 		android:layout_below="@id/txtDenom"
 		android:layout_centerHorizontal="true"
-		android:layout_marginTop="50dp"
+		android:layout_marginTop="40dp"
 	  	android:text="@string/txt_count"
 	  	android:textSize="60sp"/>  
 	  	      
@@ -99,22 +99,23 @@
         android:layout_height="wrap_content"
 		android:text="@string/btn_voice"
         android:onClick="onVoiceInput"
-		android:layout_alignRight="@id/btn_decreaseCount"
+		android:layout_alignParentLeft="true"
+		android:layout_marginLeft="10dp"
 		android:layout_below="@id/txtCount"
-		android:layout_marginTop="50dp"
-        android:textSize="18sp"/> 
+		android:layout_marginTop="30dp"
+        android:textSize="24sp"/> 
         
   	 <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 		android:layout_alignParentRight="true"
+		android:layout_marginRight="10dp"
 		android:layout_below="@id/txtCount"
-		android:layout_alignLeft="@id/btn_increaseCount"
 		android:text="@string/btn_add"
         android:onClick="onAddTotal"
-        android:layout_marginTop="50dp"
-        android:textSize="18sp"/>        
+        android:layout_marginTop="30dp"
+        android:textSize="24sp"/>        
     </RelativeLayout> 
      
    <RelativeLayout  
@@ -167,5 +168,27 @@
 		android:layout_marginTop="5dp"
 	  	android:textSize="42sp"/> 
       </RelativeLayout>   
+      
+    <Button
+        android:id="@+id/btn_History"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/total_frame"
+		android:layout_alignLeft="@id/total_frame"
+		android:text="@string/btn_history"
+        android:onClick="onHistory"
+        android:layout_marginTop="10dp"
+        android:textSize="32sp"/>
+    
+        <Button
+        android:id="@+id/btn_Return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/total_frame"
+		android:layout_alignRight="@id/total_frame"
+		android:text="@string/btn_return"
+        android:onClick="onReturn"
+        android:layout_marginTop="10dp"
+        android:textSize="32sp"/>  
 
 </RelativeLayout>

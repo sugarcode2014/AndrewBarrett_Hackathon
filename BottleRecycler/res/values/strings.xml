@@ -7,11 +7,15 @@
     <string name="txt_denom">$0.00</string>
     <string name="btn_plus">+</string>
     <string name="btn_minus">-</string>
-    <string name="btn_voice">voice      input</string>
+    <string name="btn_voice">Voice Input</string>
     <string name="btn_add">Add to Total</string>
+    <string name="btn_history">History</string>
+    <string name="btn_return">Cash In</string>
     <string name="_0_02d">$ 0.%02d</string>
     <string name="lbl_totalvalue">$ Value</string>
     <string name="lbl_totalCount">Total #</string>
     <string name="lbl_Counter">Bottle Counter</string>
+    <string name="title_activity_history">HistoryActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

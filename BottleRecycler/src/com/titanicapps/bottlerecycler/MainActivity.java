@@ -2,6 +2,7 @@ package com.titanicapps.bottlerecycler;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -199,6 +200,29 @@ public class MainActivity extends ActionBarActivity {
 				
 	}
 	
+	public void onHistory(View view)
+	{
+    	Intent intent = new Intent(this, HistoryActivity.class);
+    	Bundle bundle = new Bundle(); 
+    	
+        bundle.putSerializable("history", dataManager.getRecycleHistoryListData());
+        intent.putExtras(bundle);
+    	startActivity(intent);
+	}
+	
+	public void onReturn(View view)
+	{
+		RecycleHistoryData recycleHistoryData = new RecycleHistoryData();		
+		recycleHistoryData.setDateReturnedInMs(Calendar.getInstance().getTimeInMillis());
+		recycleHistoryData.setCountRecords(dataManager.getBottleCountData().getCountRecords());
+		dataManager.getRecycleHistoryListData().addRecycleHistoryData(recycleHistoryData);
+		
+		dataManager.getBottleCountData().clearCountData();
+		setTotalCountText();
+		setTotalValueText();
+	}
+	
+	
 	 @Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == VOICE_RECOGNITION_REQUEST_CODE) {
@@ -320,7 +344,6 @@ public class MainActivity extends ActionBarActivity {
 		 }
 	 }
 
-	 
 	 private void showToastMessage(String message)
 	 {
 		 Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
