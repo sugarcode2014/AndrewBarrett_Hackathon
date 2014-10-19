@@ -17,5 +17,8 @@
     <string name="lbl_Counter">Bottle Counter</string>
     <string name="title_activity_history">HistoryActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="date_title">Date</string>
+    <string name="total_title">Total #</string>
+    <string name="value_title">Value</string>
 
 </resources>
