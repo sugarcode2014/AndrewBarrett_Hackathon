@@ -6,82 +6,103 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#61D45B"
     tools:context="com.titanicapps.bottlerecycler.MainActivity$PlaceholderFragment" >
 
+   <RelativeLayout   
+       android:id="@+id/counter_frame"
+       android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" 
+        android:layout_marginTop="10dp"
+        android:background="#A7DBA4">
+        
+     <TextView
+	    android:id="@+id/lblCounter"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:gravity="center"
+	  	android:textSize="38sp"
+	  	android:background="#065902"
+	  	android:text="@string/lbl_Counter"
+	  	android:textColor="#FFFFFF" /> 	
+        
   	<TextView
 	    android:id="@+id/txtDenom"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-		android:layout_alignParentTop="true"
+		android:layout_below="@id/lblCounter"
 		android:layout_centerHorizontal="true"
 		android:layout_marginTop="5dp"
 		android:text="@string/txt_denom"
-	  	android:textAppearance="?android:attr/textAppearanceLarge"/> 
+	  	android:textSize="28sp"/> 
 	  		
 	<Button
         android:id="@+id/btn_decreaseDenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/txtDenom"
-		android:layout_alignParentTop="true"
-		android:layout_marginTop="5dp"
+		android:layout_alignTop="@id/txtDenom"
 		android:layout_marginRight="5dp"
 		android:text="@string/btn_minus"
-        android:onClick="onDecreaseDenom"/> 
+        android:onClick="onDecreaseDenom"
+        android:textSize="18sp"/> 
         	    
 	<Button
         android:id="@+id/btn_increaseDenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_alignParentTop="true"
-		android:layout_marginTop="5dp"
+		android:layout_alignTop="@id/txtDenom"
 		android:layout_marginLeft="5dp"
 		android:layout_toRightOf="@id/txtDenom"
 		android:text="@string/btn_plus"
-        android:onClick="onIncreaseDenom"/> 	
-        
+        android:onClick="onIncreaseDenom"
+        android:textSize="18sp"/> 	
+
+   	<TextView
+	    android:id="@+id/txtCount"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_below="@id/txtDenom"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="50dp"
+	  	android:text="@string/txt_count"
+	  	android:textSize="60sp"/>  
+	  	      
 	<Button
         android:id="@+id/btn_decreaseCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_alignParentLeft="true"
 		android:layout_below="@id/txtDenom"
-		android:layout_marginRight="5dp"
-		android:layout_marginTop="30dp"
+		android:layout_alignTop="@id/txtCount"
+		android:layout_toLeftOf="@id/txtCount"
 		android:text="@string/btn_minus"
-        android:onClick="onDecreaseCount"/> 
-        
-  	<TextView
-	    android:id="@+id/txtCount"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-		android:layout_alignTop="@id/btn_decreaseCount"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="30dp"
-	  	android:textAppearance="?android:attr/textAppearanceLarge"
-	  	android:text="@string/txt_count"/> 
-	  	
+        android:onClick="onDecreaseCount"
+        android:textSize="40sp"/> 
+  	
   	<Button
         android:id="@+id/btn_increaseCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_alignParentRight="true"
-		android:layout_below="@id/txtDenom"
-		android:layout_marginLeft="5dp"
-		android:layout_marginTop="30dp"
+		android:layout_alignTop="@id/txtCount"
+		android:layout_toRightOf="@id/txtCount"		
 		android:text="@string/btn_plus"
-        android:onClick="onIncreaseCount"/> 
+        android:onClick="onIncreaseCount"
+        android:textSize="40sp"/> 
         
   	 <Button
         android:id="@+id/btn_voiceInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_alignParentLeft="true"
-		android:layout_below="@id/txtCount"
-		android:layout_marginLeft="5dp"
-		android:layout_marginTop="10dp"
 		android:text="@string/btn_voice"
-        android:onClick="onVoiceInput"/> 
+        android:onClick="onVoiceInput"
+		android:layout_alignRight="@id/btn_decreaseCount"
+		android:layout_below="@id/txtCount"
+		android:layout_marginTop="50dp"
+        android:textSize="18sp"/> 
         
   	 <Button
         android:id="@+id/btn_add"
@@ -89,28 +110,62 @@
         android:layout_height="wrap_content"
 		android:layout_alignParentRight="true"
 		android:layout_below="@id/txtCount"
-		android:layout_marginLeft="5dp"
-		android:layout_marginTop="10dp"
+		android:layout_alignLeft="@id/btn_increaseCount"
 		android:text="@string/btn_add"
-        android:onClick="onAddTotal"/> 
-        
+        android:onClick="onAddTotal"
+        android:layout_marginTop="50dp"
+        android:textSize="18sp"/>        
+    </RelativeLayout> 
+     
+   <RelativeLayout  
+       android:id="@+id/total_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/counter_frame" 
+        android:layout_marginTop="30dp"
+        android:background="#A7DBA4">
+ 
+    <TextView
+	    android:id="@+id/lblTotalValue"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+	  	android:textSize="38sp"
+	  	android:background="#065902"
+	  	android:text="@string/lbl_totalvalue"
+	  	android:textColor="#FFFFFF" /> 
+	  		 
   	<TextView
 	    android:id="@+id/txtTotalValue"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-		android:layout_alignLeft="@id/btn_voiceInput"
-		android:layout_below="@id/btn_voiceInput"
-		android:layout_marginTop="30dp"
-	  	android:textAppearance="?android:attr/textAppearanceLarge"/> 
+		android:layout_below="@id/lblTotalValue"
+		android:layout_alignParentLeft="true"
+		android:layout_marginTop="5dp"
+	  	android:textSize="42sp"/> 
+
+  	 <TextView
+	    android:id="@+id/lblTotalCount"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_toRightOf="@id/lblTotalValue"
+		android:gravity="right"
+	  	android:textSize="38sp"
+	  	android:background="#065902"
+	  	android:text="@string/lbl_totalCount"
+	  	android:textColor="#FFFFFF" /> 	  	
 	  	
   	 <TextView
 	    android:id="@+id/txtTotalCount"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-		android:layout_alignLeft="@id/btn_add"
-		android:layout_below="@id/btn_voiceInput"
-		android:layout_marginTop="30dp"
-	  	android:textAppearance="?android:attr/textAppearanceLarge"/> 
-        
+		android:layout_alignParentRight="true"
+		android:layout_below="@id/lblTotalCount"
+		android:layout_marginTop="5dp"
+	  	android:textSize="42sp"/> 
+      </RelativeLayout>   
 
 </RelativeLayout>
