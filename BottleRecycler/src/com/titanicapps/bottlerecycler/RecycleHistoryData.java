@@ -16,7 +16,10 @@ public class RecycleHistoryData implements Serializable{
 	}
 	
 	public void setCountRecords(ArrayList<CountRecord> countRecords){
-		this.countRecords = countRecords;
+		for(int i = 0; i < countRecords.size(); i++)
+		{
+			this.countRecords.add(countRecords.get(i));
+		}
 	}
 	
 	public ArrayList<CountRecord> getCountRecords(){

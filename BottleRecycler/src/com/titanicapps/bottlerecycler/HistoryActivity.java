@@ -69,7 +69,7 @@ public class HistoryActivity extends ActionBarActivity {
 	    TextView tvDates = new TextView(this);
 	    tvDates.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 	      LayoutParams.WRAP_CONTENT));
-	    tvDates.setBackgroundColor(0x0061D45B);
+	    tvDates.setBackgroundColor(0xFF065902);
 	    tvDates.setText(R.string.date_title);
 	    tvDates.setTextSize(fontSize);
 	    tvDates.setTextColor(0xFFFFFFFF);
@@ -78,7 +78,7 @@ public class HistoryActivity extends ActionBarActivity {
 	    TextView tvCounts = new TextView(this);
 	    tvCounts.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 	      LayoutParams.WRAP_CONTENT));
-	    tvCounts.setBackgroundColor(0x0061D45B);
+	    tvCounts.setBackgroundColor(0xFF065902);
 	    tvCounts.setText(R.string.total_title);
 	    tvCounts.setTextSize(fontSize);
 	    tvCounts.setTextColor(0xFFFFFFFF);
@@ -87,7 +87,7 @@ public class HistoryActivity extends ActionBarActivity {
 	    TextView tvValues = new TextView(this);
 	    tvValues.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 	      LayoutParams.WRAP_CONTENT));
-	    tvValues.setBackgroundColor(0x0061D45B);
+	    tvValues.setBackgroundColor(0xFF065902);
 	    tvValues.setText(R.string.value_title);
 	    tvValues.setTextSize(fontSize);
 	    tvValues.setTextColor(0xFFFFFFFF);
@@ -102,17 +102,17 @@ public class HistoryActivity extends ActionBarActivity {
 			   row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 			     LayoutParams.WRAP_CONTENT));
 			   
-			 if(i%2 == 0)
-			 {
-				 row.setBackgroundColor(0x00A7DBA4);
-			 }
-			   
+	   
 			   
 			 //Date
 		    TextView tv1 = new TextView(this);
 		    tv1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 		      LayoutParams.WRAP_CONTENT));
-		   // tv1.setBackgroundColor(cellColor);
+			 if(i%2 == 0)
+			 {
+				 tv1.setBackgroundColor(0xFFA7DBA4);
+			 }
+		   
 		
 		    //tv1.setPadding(5, 5, 5, 5);
 		    Calendar calendar = Calendar.getInstance();
@@ -121,7 +121,7 @@ public class HistoryActivity extends ActionBarActivity {
 					Locale.CANADA);
 			String date = dateFormat.format(calendar.getTime());
 		    tv1.setText(date);
-		    tv1.setTextColor(0x00000000);
+		    //tv1.setTextColor(0x00000000);
 		    
 		    tv1.setTextSize(fontSize);
 		    row.addView(tv1);
@@ -141,8 +141,12 @@ public class HistoryActivity extends ActionBarActivity {
 		    	
 		    }
 		    tv2.setText(totalCount.toString());
-		    tv2.setTextColor(0x00000000);
+		    //tv2.setTextColor(0x00000000);
 		    tv2.setTextSize(fontSize);
+			 if(i%2 == 0)
+			 {
+				 tv2.setBackgroundColor(0xFFA7DBA4);
+			 }
 		    row.addView(tv2);
 		    
 		    //total value
@@ -153,8 +157,12 @@ public class HistoryActivity extends ActionBarActivity {
 		    NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
 
 		    tv3.setText(currencyFormat.format(totalValue.longValue()/100.0));
-		    tv3.setTextColor(0x00000000);
+		    //tv3.setTextColor(0x00000000);
 		    tv3.setTextSize(fontSize);
+			 if(i%2 == 0)
+			 {
+				 tv3.setBackgroundColor(0xFFA7DBA4);
+			 }
 		    row.addView(tv3);
 		    
 		    tableLayout.addView(row);

@@ -212,14 +212,19 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void onReturn(View view)
 	{
-		RecycleHistoryData recycleHistoryData = new RecycleHistoryData();		
-		recycleHistoryData.setDateReturnedInMs(Calendar.getInstance().getTimeInMillis());
-		recycleHistoryData.setCountRecords(dataManager.getBottleCountData().getCountRecords());
-		dataManager.getRecycleHistoryListData().addRecycleHistoryData(recycleHistoryData);
+		if(dataManager.getBottleCountData().getTotalCount() > 0)
+		{
+			RecycleHistoryData recycleHistoryData = new RecycleHistoryData();		
+			recycleHistoryData.setDateReturnedInMs(Calendar.getInstance().getTimeInMillis());
+			
+			
+			recycleHistoryData.setCountRecords(dataManager.getBottleCountData().getCountRecords());
 		
-		dataManager.getBottleCountData().clearCountData();
-		setTotalCountText();
-		setTotalValueText();
+			dataManager.getRecycleHistoryListData().addRecycleHistoryData(recycleHistoryData);
+			dataManager.getBottleCountData().clearCountData();
+			setTotalCountText();
+			setTotalValueText();
+		}
 	}
 	
 	

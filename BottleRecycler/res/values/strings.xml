@@ -15,7 +15,7 @@
     <string name="lbl_totalvalue">$ Value</string>
     <string name="lbl_totalCount">Total #</string>
     <string name="lbl_Counter">Bottle Counter</string>
-    <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_history">Recycle History</string>
     <string name="hello_world">Hello world!</string>
     <string name="date_title">Date</string>
     <string name="total_title">Total #</string>
