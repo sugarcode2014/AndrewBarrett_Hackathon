@@ -12,8 +12,8 @@
     <string name="btn_history">History</string>
     <string name="btn_return">Cash In</string>
     <string name="_0_02d">$ 0.%02d</string>
-    <string name="lbl_totalvalue">$ Value</string>
-    <string name="lbl_totalCount">Total #</string>
+    <string name="lbl_totalvalue">Value</string>
+    <string name="lbl_totalCount">Total</string>
     <string name="lbl_Counter">Bottle Counter</string>
     <string name="title_activity_history">Recycle History</string>
     <string name="hello_world">Hello world!</string>

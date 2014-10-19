@@ -70,6 +70,7 @@
 		android:layout_centerHorizontal="true"
 		android:layout_marginTop="40dp"
 	  	android:text="@string/txt_count"
+	  	android:textStyle="bold"
 	  	android:textSize="60sp"/>  
 	  	      
 	<Button
@@ -103,7 +104,10 @@
 		android:layout_marginLeft="10dp"
 		android:layout_below="@id/txtCount"
 		android:layout_marginTop="30dp"
-        android:textSize="24sp"/> 
+		android:paddingLeft="30dp" 
+        android:paddingRight="30dp"     
+        android:background="@drawable/cool_button"
+        android:textSize="18sp"/> 
         
   	 <Button
         android:id="@+id/btn_add"
@@ -115,7 +119,10 @@
 		android:text="@string/btn_add"
         android:onClick="onAddTotal"
         android:layout_marginTop="30dp"
-        android:textSize="24sp"/>        
+        android:paddingLeft="30dp" 
+        android:paddingRight="30dp"     
+        android:background="@drawable/cool_button"
+        android:textSize="18sp"/>        
     </RelativeLayout> 
      
    <RelativeLayout  
@@ -178,7 +185,10 @@
 		android:text="@string/btn_history"
         android:onClick="onHistory"
         android:layout_marginTop="10dp"
-        android:textSize="32sp"/>
+       	android:paddingLeft="30dp" 
+        android:paddingRight="30dp"     
+        android:background="@drawable/cool_button"
+        android:textSize="28sp"/>
     
         <Button
         android:id="@+id/btn_Return"
@@ -188,7 +198,10 @@
 		android:layout_alignRight="@id/total_frame"
 		android:text="@string/btn_return"
         android:onClick="onReturn"
+        android:paddingLeft="30dp" 
+        android:paddingRight="30dp"     
+        android:background="@drawable/cool_button"
         android:layout_marginTop="10dp"
-        android:textSize="32sp"/>  
+        android:textSize="28sp"/>  
 
 </RelativeLayout>
